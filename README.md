@@ -17,7 +17,7 @@ Install [from the webstore](https://chrome.google.com/webstore/detail/chrome-unp
  - Clone the repo
  - load `app` folder as unpacked extension in Chrome
  - start developing an unpacked extension
-  - don't forget to emit events when a file changes
+  - don't forget to [emit events when a file changes](https://github.com/robin-drexler/chrome-extension-auto-reload-watcher)
 
 ## Why...
 
@@ -27,24 +27,28 @@ Currently disabling and enabling extensions again causes any open inspection win
 
 ## Development
 
-To hack this code, make sure you have NodeJS installed, then navigate to the root of this project in your command line interface and run the following to install all dependencies:
+To hack this code, make sure you have [NodeJS](http://nodejs.org) installed, then navigate to the root of this project in your command line interface and run the following to install all dependencies:
 ```
 npm install
 ```
 
-Generate a `build/` folder which can be loaded into Chrome as an unpacked extension: *
+Generate a `build/` folder which can be loaded into Chrome as an unpacked extension:
 ```
-gulp build
-```
-
-Automatically rebuild modified files into `build/` when they're saved: *
-```
-gulp watch
+npm run build
 ```
 
-Generate `dist/chrome-extension.zip`, which can be uploaded to the Chrom web store: *
+Automatically rebuild modified files into `build/` when they're saved:
 ```
-gulp dist
+npm run watch
 ```
 
-\* **Note** If you have trouble with gulp not being included in your path, you can replace gulp with "npm run" in the commands above. "gulp build" would become "npm run build".
+Generate `dist/chrome-extension.zip`, which can be uploaded to the Chrom web store:
+```
+npm run dist
+```
+
+## Contributors
+
+This extension was originally developed by [robin-drexler](https://github.com/robin-drexler/chrome-extension-auto-reload).
+
+Updates by [JeromeDane](https://github.com/JeromeDane/chrome-extension-auto-reload) to fix broken reload method using [arikw's method](https://github.com/arikw/chrome-extensions-reloader/blob/master/background.js#L1). Added gulp build process and removed [socket.io-client](https://www.npmjs.com/package/socket.io-client) code from repo so it could be loaded as a dependency instead.
